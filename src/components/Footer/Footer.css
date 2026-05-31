@@ -1,19 +1,45 @@
 .footer { background: var(--bg-section); }
 
 .footer__map-section {
-  padding: 60px 0;
-  border-top: 1px solid #3a3a3a;
+  position: relative;
+  margin-top: -120px;
+  padding-top: 120px;
+  padding-bottom: 0;
+  min-height: 480px;
+}
+
+.footer__map-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.footer__map-bg iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(1) brightness(0.6);
 }
 
 .footer__map-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  min-height: calc(480px - 120px);
+}
+
+.footer__contacts {
+  background: rgba(20,20,20,0.92);
+  padding: 48px 40px;
+  min-width: 420px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer__contacts-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: #fff;
@@ -81,36 +107,29 @@
 }
 .footer__social-icon:hover { background: var(--green); }
 
-.footer__map {
-  position: relative;
-  height: 360px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #3a3a3a;
-}
-.footer__map iframe { width: 100%; height: 100%; border: none; filter: grayscale(1) brightness(0.7); }
-
 .footer__map-pin {
   position: absolute;
-  bottom: 30%;
+  bottom: 35%;
   right: 30%;
-  background: var(--green);
+  z-index: 1;
+  background: #2d3a2d;
   color: #fff;
   font-size: 12px;
   font-weight: 700;
-  padding: 8px 12px;
-  border-radius: 20px;
+  padding: 10px 16px;
+  border-radius: 50px;
   white-space: nowrap;
+  text-align: center;
+  line-height: 1.4;
 }
 .footer__map-pin::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-top-color: var(--green);
-  border-bottom: 0;
+  border: 8px solid transparent;
+  border-top: 12px solid #2d3a2d;
 }
 
 /* Bottom */
@@ -129,7 +148,7 @@
 .footer__bottom-left { display: flex; gap: 24px; align-items: flex-start; }
 
 .footer__brand {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #fff;

@@ -30,7 +30,7 @@
 }
 
 .checkout-page__title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   font-size: 28px;
   font-weight: 700;
   color: #fff;
@@ -87,7 +87,7 @@
   border-radius: 4px;
   color: #fff;
   font-size: 14px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   padding: 12px 14px;
   outline: none;
   transition: border-color 0.2s;
@@ -102,7 +102,7 @@
   border-radius: 4px;
   color: #fff;
   font-size: 14px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   padding: 12px 14px;
   outline: none;
   appearance: none;
@@ -137,7 +137,7 @@
   border: 1px solid #4a4a4a;
   color: #bbb;
   font-size: 13px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   padding: 10px 18px;
   border-radius: 4px;
   transition: all 0.2s;

@@ -3,7 +3,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .header__top {
@@ -15,8 +17,8 @@
 }
 
 .header__logo {
-  font-family: 'Oswald', sans-serif;
-  font-size: 24px;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 25px;
   font-weight: 700;
   color: #fff;
   letter-spacing: 3px;
@@ -41,7 +43,10 @@
   height: 42px;
 }
 
-.header__search-pin { color: #888; flex-shrink: 0; }
+.header__search-pin {
+  color: #888;
+  flex-shrink: 0;
+}
 
 .header__search input {
   flex: 1;
@@ -50,10 +55,12 @@
   outline: none;
   color: #fff;
   font-size: 14px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Gilroy', sans-serif;
 }
 
-.header__search input::placeholder { color: #888; }
+.header__search input::placeholder {
+  color: #888;
+}
 
 .header__search-btn {
   background: transparent;
@@ -73,7 +80,7 @@
   border-radius: 4px;
   overflow: hidden;
   z-index: 200;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .header__suggestions li {
@@ -83,7 +90,10 @@
   color: #fff;
   transition: background 0.15s;
 }
-.header__suggestions li:hover { background: #484848; }
+
+.header__suggestions li:hover {
+  background: #484848;
+}
 
 /* Contacts */
 .header__contacts {
@@ -94,15 +104,16 @@
 }
 
 .header__contacts-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--green);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
   flex-shrink: 0;
+}
+
+.header__contacts-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .header__contacts-label {
@@ -140,7 +151,10 @@
   border-radius: 4px;
   transition: background 0.2s;
 }
-.header__login:hover { background: #3d3d3d; }
+
+.header__login:hover {
+  background: #3d3d3d;
+}
 
 .header__cart {
   display: flex;
@@ -156,7 +170,10 @@
   position: relative;
   transition: background 0.2s;
 }
-.header__cart:hover { background: var(--green-hover); }
+
+.header__cart:hover {
+  background: var(--green-hover);
+}
 
 .header__cart-count {
   background: #fff;
@@ -169,39 +186,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Nav */
-.header__nav {
-  display: flex;
-  gap: 0;
-  border-top: 1px solid #3d3d3d;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.header__nav::-webkit-scrollbar { display: none; }
-
-.header__nav-item {
-  background: transparent;
-  border: none;
-  color: #ccc;
-  font-size: 14px;
-  font-family: 'Nunito Sans', sans-serif;
-  padding: 14px 18px;
-  white-space: nowrap;
-  position: relative;
-  transition: color 0.2s;
-}
-.header__nav-item:hover { color: #fff; }
-.header__nav-item.active {
-  color: #fff;
-}
-.header__nav-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--green);
 }

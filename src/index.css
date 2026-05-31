@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gilroy-free');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -21,10 +22,11 @@
 }
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -32,7 +34,7 @@ button { cursor: pointer; font-family: inherit; }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
-h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 700; letter-spacing: 0.02em; }
+h1, h2, h3 { font-family: 'Gilroy', sans-serif; font-weight: 700; letter-spacing: 0.02em; }
 
 .container {
   max-width: 1240px;
@@ -41,7 +43,7 @@ h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 700; letter-spacing
 }
 
 .section-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   font-size: 28px;
   font-weight: 700;
   color: var(--text);

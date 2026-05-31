@@ -1,18 +1,21 @@
 .product-card {
   background: var(--bg-card);
   border-radius: var(--radius);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s;
+  transition: transform 0.25s ease;
+  will-change: transform;
 }
-.product-card:hover { transform: translateY(-2px); }
+.product-card:hover {
+  transform: scale(1.03);
+}
 
 .product-card__img-wrap {
   position: relative;
   cursor: pointer;
   overflow: hidden;
   height: 180px;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 .product-card__img {
   width: 100%;

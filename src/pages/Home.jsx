@@ -10,6 +10,12 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const sectionRefs = useRef({});
+  const sliderRefs = useRef({});
+
+  const slide = (catId, dir) => {
+    const el = sliderRefs.current[catId];
+    if (el) el.scrollBy({ left: dir * 820, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     fetchAllProducts()
@@ -50,16 +56,29 @@ export default function Home() {
 
   return (
     <>
-      <Header activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
+      <Header />
 
       <main className="home">
         <section className="hero">
           <div className="hero__overlay" />
           <div className="hero__content">
-            <h1 className="hero__title">ДОСТАВКА ВКУСНЕЙШИХ<br />БЛЮД ЗА 60 МИНУТ</h1>
-            <button className="hero__cta">ЕЩЁ НЕ ПРОБОВАЛ?</button>
+            <img src="./taste.svg" alt="taste" className="hero__taste" />
           </div>
         </section>
+
+        <nav className="category-nav">
+          <div className="category-nav__inner container">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                className={`category-nav__item ${activeCategory === cat.id ? 'active' : ''}`}
+                onClick={() => handleCategoryChange(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </nav>
 
         <div className="menu-sections container">
           {groupedProducts.map(group => (
@@ -69,8 +88,18 @@ export default function Home() {
               ref={el => sectionRefs.current[group.id] = el}
               className="menu-section"
             >
-              <h2 className="section-title">{group.label.toUpperCase()}</h2>
-              <div className="menu-grid">
+              <div className="menu-section__header">
+                <h2 className="section-title">{group.label.toUpperCase()}</h2>
+                <div className="slider-nav">
+                  <button className="slider-nav__btn" onClick={() => slide(group.id, -1)}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                  </button>
+                  <button className="slider-nav__btn" onClick={() => slide(group.id, 1)}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div className="menu-slider" ref={el => sliderRefs.current[group.id] = el}>
                 {group.items.map(p => <ProductCard key={p.id} product={p} />)}
               </div>
             </section>
@@ -78,32 +107,21 @@ export default function Home() {
         </div>
 
         <section className="about-cafe">
-          <div className="about-cafe__overlay" />
-          <div className="container about-cafe__content">
-            <div className="about-cafe__left">
-              <h2 className="about-cafe__title">НАШЕ КАФЕ</h2>
-              <p>Мы расположены в одном из самых живописных мест города — на берегу реки, это ваш оазис в черте города, куда можно сбежать от шумного и пыльного мегаполиса.</p>
-              <p>Мы, действительно уникальны, ведь всё продумано до мелочей: проект построен из дикого закарпатского сруба, казни в основном зале ресторана и панорамные окна с видом на реку, уютные беседки на берегу реки и лучшая видовая терраса, шатер с посадкой на 200 человек, сказочный детский домик и бассейн.</p>
-              <button className="about-cafe__btn">ПОСМОТРЕТЬ МЕНЮ</button>
-            </div>
-            <div className="about-cafe__features">
-              <div className="about-cafe__feature">
-                <div className="feature-icon">🧅</div>
-                <span>Свежайшие продукты</span>
+          <div className="about-cafe__card">
+              <div className="about-cafe__overlay" />
+              <div className="about-cafe__content">
+                <div className="about-cafe__left">
+                  <h2 className="about-cafe__title">НАШЕ КАФЕ</h2>
+                  <p>Мы расположены в одном из самых живописных мест города — на берегу реки, это ваш оазис в черте города, куда можно сбежать от шумного и пыльного мегаполиса. Мы, действительно уникальны, ведь всё продумано до мелочей: проект построен из дикого закарпатского сруба, камин в основном зале ресторана и панорамные окна с видом на реку, уютные беседки на берегу реки и лучшая видовая терраса, шатер с посадкой на 200 человек, сказочный детский домик и бассейн.</p>
+                  <button className="about-cafe__btn">ПОСМОТРЕТЬ МЕНЮ</button>
+                </div>
+                <div className="about-cafe__features">
+                  <img src="./onion.png" alt="" className="feature-icon" />
+                  <img src="./flash.png" alt="" className="feature-icon" />
+                  <img src="./chief.png" alt="" className="feature-icon" />
+                  <img src="./onion.png" alt="" className="feature-icon" />
+                </div>
               </div>
-              <div className="about-cafe__feature about-cafe__feature--green">
-                <div className="feature-icon">⚡</div>
-                <span>Быстрая доставка</span>
-              </div>
-              <div className="about-cafe__feature">
-                <div className="feature-icon">👨‍🍳</div>
-                <span>Лучшие повара</span>
-              </div>
-              <div className="about-cafe__feature">
-                <div className="feature-icon">🧅</div>
-                <span>Свежайшие продукты</span>
-              </div>
-            </div>
           </div>
         </section>
       </main>

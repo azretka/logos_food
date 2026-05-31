@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../store/CartContext';
-import { categories } from '../../api/mealApi';
 import CartModal from '../Modal/CartModal';
 import './Header.css';
 
@@ -11,12 +10,11 @@ const addressSuggestions = [
   'Москва, Часовая улица, 11/3',
 ];
 
-export default function Header({ activeCategory, onCategoryChange }) {
+export default function Header() {
   const { count } = useCart();
   const [address, setAddress] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const navigate = useNavigate();
   const inputRef = useRef(null);
 
   const filtered = addressSuggestions.filter(s =>
@@ -62,7 +60,7 @@ export default function Header({ activeCategory, onCategoryChange }) {
 
           <div className="header__contacts">
             <div className="header__contacts-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.18 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <img src="./ring.svg" alt="phone" />
             </div>
             <div>
               <span className="header__contacts-label">Контакты:</span>
@@ -82,18 +80,6 @@ export default function Header({ activeCategory, onCategoryChange }) {
             </button>
           </div>
         </div>
-
-        <nav className="header__nav container">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              className={`header__nav-item ${activeCategory === cat.id ? 'active' : ''}`}
-              onClick={() => onCategoryChange ? onCategoryChange(cat.id) : navigate(`/#${cat.id}`)}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </nav>
       </header>
 
       <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />

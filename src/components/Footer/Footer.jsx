@@ -5,6 +5,16 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__map-section">
+        <div className="footer__map-bg">
+          <iframe
+            src="https://maps.google.com/maps?q=Moffett+Federal+Airfield&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            title="map"
+            allowFullScreen=""
+            loading="lazy"
+          />
+          <div className="footer__map-pin"><span>Мы здесь!</span></div>
+        </div>
+
         <div className="container footer__map-content">
           <div className="footer__contacts">
             <h3 className="footer__contacts-title">КОНТАКТЫ</h3>
@@ -27,7 +37,7 @@ export default function Footer() {
               <button className="footer__reserve-btn">ЗАБРОНИРОВАТЬ СТОЛ</button>
               <div className="footer__phone-block">
                 <a href="tel:+79175105759" className="footer__phone">+7 (917) 510-57-59</a>
-                <span>Звоните в любое время</span>
+                <span>Звоните или оставьте заявку</span>
               </div>
             </div>
             <div className="footer__social">
@@ -37,17 +47,6 @@ export default function Footer() {
                   <a key={s} href="#" className="footer__social-icon">{s[0].toUpperCase()}</a>
                 ))}
               </div>
-            </div>
-          </div>
-          <div className="footer__map">
-            <iframe
-              src="https://maps.google.com/maps?q=Moffett+Federal+Airfield&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              title="map"
-              allowFullScreen=""
-              loading="lazy"
-            />
-            <div className="footer__map-pin">
-              <span>Мы здесь!</span>
             </div>
           </div>
         </div>
