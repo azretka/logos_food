@@ -1,0 +1,124 @@
+.delivery-page { padding: 36px 0 60px; }
+
+.delivery-page__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.delivery-page__title-bar {
+  display: block;
+  width: 4px;
+  height: 30px;
+  background: var(--green);
+  border-radius: 2px;
+}
+
+.delivery-page__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.delivery-page__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+/* FAQ */
+.delivery-faq { display: flex; flex-direction: column; gap: 6px; }
+
+.faq-item {
+  background: var(--green);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.faq-item__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif;
+  padding: 14px 16px;
+  text-align: left;
+  transition: background 0.2s;
+}
+.faq-item__question:hover { background: rgba(0,0,0,0.1); }
+
+.faq-item__arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-item.open .faq-item__arrow { transform: rotate(180deg); }
+
+.faq-item__answer {
+  background: rgba(0,0,0,0.2);
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #e0e0e0;
+  line-height: 1.7;
+}
+
+/* Map */
+.delivery-page__map {
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #3a3a3a;
+}
+.delivery-page__map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(1) brightness(0.7);
+}
+
+/* Info blocks */
+.delivery-info {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 20px;
+}
+
+.delivery-info__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.delivery-info__value {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.delivery-min {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.delivery-min__title {
+  font-weight: 700;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .delivery-page__content { grid-template-columns: 1fr; }
+  .delivery-info { flex-direction: column; gap: 20px; }
+}
