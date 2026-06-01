@@ -93,7 +93,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: var(--green);
+  background: #72A479;
   border: none;
   color: #fff;
   font-size: 13px;
@@ -102,7 +102,7 @@
   border-radius: 4px;
   transition: background 0.2s;
 }
-.product-card__add:hover { background: var(--green-hover); }
+.product-card__add:hover { background: #5d8f64; }
 
 .product-card__counter {
   display: flex;

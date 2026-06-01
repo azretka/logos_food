@@ -160,7 +160,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--green);
+  background: #72A479;
   border: none;
   color: #fff;
   font-size: 14px;
@@ -172,7 +172,7 @@
 }
 
 .header__cart:hover {
-  background: var(--green-hover);
+  background: #5d8f64;
 }
 
 .header__cart-count {

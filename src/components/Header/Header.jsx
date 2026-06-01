@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../store/CartContext';
 import CartModal from '../Modal/CartModal';
 import './Header.css';
@@ -16,6 +16,12 @@ export default function Header() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleCartClick = () => {
+    if (count > 0) navigate('/cart');
+    else setCartOpen(true);
+  };
 
   const filtered = addressSuggestions.filter(s =>
     s.toLowerCase().includes(address.toLowerCase()) && address.length > 1
@@ -73,7 +79,7 @@ export default function Header() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               Войти
             </button>
-            <button className="header__cart" onClick={() => setCartOpen(true)}>
+            <button className="header__cart" onClick={handleCartClick}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
               Корзина
               {count > 0 && <span className="header__cart-count">{count}</span>}

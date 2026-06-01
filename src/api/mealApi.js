@@ -5,17 +5,17 @@ const CATEGORY_MAP = {
   Chicken:       'hot',
   Seafood:       'fish',
   Lamb:          'cold',
-  Pork:          'meat',
+  Pork:          'grill',
   Pasta:         'hot',
   Soup:          'soup',
   Side:          'signature',
   Starter:       'cold',
   Dessert:       'signature',
   Vegetarian:    'hot',
-  Miscellaneous: 'signature',
+  Miscellaneous: 'meat',
   Goat:          'grill',
-  Vegan:         'hot',
-  Breakfast:     'hot',
+  Vegan:         'fish',
+  Breakfast:     'fish',
 };
 
 const pseudoPrice = (id) => {
