@@ -144,12 +144,13 @@
   display: flex;
   gap: 16px;
   overflow-x: auto;
+  overflow-y: visible;
   scrollbar-width: none;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  padding: 12px 20px;
-  margin-top: -12px;
-  margin-bottom: -12px;
+  padding: 20px 20px;
+  margin-top: -20px;
+  margin-bottom: -20px;
 }
 .menu-slider::-webkit-scrollbar { display: none; }
 
@@ -225,12 +226,24 @@
   justify-self: end;
 }
 
+.feature-icon-wrap {
+  position: relative;
+  width: 228px;
+  height: 228px;
+}
+
 .feature-icon {
+  position: absolute;
+  inset: 0;
   width: 228px;
   height: 228px;
   object-fit: cover;
-  display: block;
+  transition: opacity 0.2s;
 }
+
+.feature-icon--hover { opacity: 0; }
+.feature-icon-wrap:hover .feature-icon--normal { opacity: 0; }
+.feature-icon-wrap:hover .feature-icon--hover  { opacity: 1; }
 
 @media (max-width: 768px) {
   .about-cafe__content { grid-template-columns: 1fr; }

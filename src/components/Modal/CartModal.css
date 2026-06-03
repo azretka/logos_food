@@ -62,7 +62,7 @@
 }
 
 .cart-modal__menu-btn {
-  background: var(--green);
+  background: #72A479;
   border: none;
   color: #fff;
   font-size: 14px;
@@ -71,7 +71,7 @@
   border-radius: 4px;
   transition: background 0.2s;
 }
-.cart-modal__menu-btn:hover { background: var(--green-hover); }
+.cart-modal__menu-btn:hover { background: #5d8f64; }
 
 .cart-modal__title {
   font-size: 20px;

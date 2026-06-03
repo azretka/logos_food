@@ -1,4 +1,13 @@
-.promotions-page { padding: 36px 0 60px; }
+.promotions-page { padding: 36px 0 160px; }
+
+body:has(.promotions-page) .footer__contacts { margin-top: -40px; }
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 0 0 32px;
+  width: 100%;
+}
 
 .promotions-grid {
   display: grid;
@@ -62,7 +71,7 @@
 
 .promo-card__expires {
   font-size: 12px;
-  color: var(--green);
+  color: #72A479;
   font-weight: 600;
   margin-top: 4px;
 }

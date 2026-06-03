@@ -78,10 +78,7 @@
   overflow: hidden;
   background: #3a3a3a;
 }
-.delivery-page__map iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+.delivery-page__map .leaflet-tile-pane {
   filter: grayscale(1) brightness(0.7);
 }
 

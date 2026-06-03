@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import { deliveryFAQ } from '../data/mockData';
+﻿import { useState } from 'react';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import Map from '../../components/Map/Map';
+import Contacts from '../../components/Contacts/Contacts';
+import { deliveryFAQ } from '../../data/mockData';
 import './Delivery.css';
 
 export default function Delivery() {
@@ -40,13 +42,9 @@ export default function Delivery() {
             </div>
 
             <div className="delivery-page__map">
-              <iframe
-                src="https://maps.google.com/maps?q=Moffett+Federal+Airfield&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                title="delivery map"
-                allowFullScreen=""
-                loading="lazy"
-              />
+              <Map />
             </div>
+            <Contacts />
           </div>
 
           <div className="delivery-info">

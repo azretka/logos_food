@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import ProductCard from '../components/ProductCard/ProductCard';
-import { fetchAllProducts, categories } from '../api/mealApi';
+﻿import { useState, useRef, useEffect } from 'react';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import Navigation from '../../components/Navigation/Navigation';
+import { fetchAllProducts, categories } from '../../api/mealApi';
 import './Home.css';
 
 export default function Home() {
@@ -62,23 +63,14 @@ export default function Home() {
         <section className="hero">
           <div className="hero__overlay" />
           <div className="hero__content">
-            <img src="./taste.svg" alt="taste" className="hero__taste" />
+            <img src="/images/taste.svg" alt="taste" className="hero__taste" />
           </div>
         </section>
 
-        <nav className="category-nav">
-          <div className="category-nav__inner container">
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                className={`category-nav__item ${activeCategory === cat.id ? 'active' : ''}`}
-                onClick={() => handleCategoryChange(cat.id)}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </nav>
+        <Navigation
+          activeCategory={activeCategory}
+          onCategoryChange={handleCategoryChange}
+        />
 
         <div className="menu-sections container">
           {groupedProducts.map(group => (
@@ -116,10 +108,17 @@ export default function Home() {
                   <button className="about-cafe__btn">ПОСМОТРЕТЬ МЕНЮ</button>
                 </div>
                 <div className="about-cafe__features">
-                  <img src="./onion.png" alt="" className="feature-icon" />
-                  <img src="./flash.png" alt="" className="feature-icon" />
-                  <img src="./chief.png" alt="" className="feature-icon" />
-                  <img src="./onion.png" alt="" className="feature-icon" />
+                  {[
+                    ['/images/onion.png', '/images/onion_green.png'],
+                    ['/images/flash.png', '/images/flash_green.png'],
+                    ['/images/chief.png', '/images/chief_green.png'],
+                    ['/images/onion.png', '/images/onion_green.png'],
+                  ].map(([normal, hover], i) => (
+                    <div key={i} className="feature-icon-wrap">
+                      <img src={normal} alt="" className="feature-icon feature-icon--normal" />
+                      <img src={hover}  alt="" className="feature-icon feature-icon--hover" />
+                    </div>
+                  ))}
                 </div>
               </div>
           </div>

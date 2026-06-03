@@ -66,7 +66,7 @@ export default function Header() {
 
           <div className="header__contacts">
             <div className="header__contacts-icon">
-              <img src="./ring.svg" alt="phone" />
+              <img src="/images/ring.svg" alt="phone" />
             </div>
             <div>
               <span className="header__contacts-label">Контакты:</span>
@@ -82,6 +82,7 @@ export default function Header() {
             <button className="header__cart" onClick={handleCartClick}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
               Корзина
+              {count > 0 && <span className="header__cart-divider" />}
               {count > 0 && <span className="header__cart-count">{count}</span>}
             </button>
           </div>

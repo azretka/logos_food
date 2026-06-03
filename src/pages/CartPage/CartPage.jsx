@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import ProductCard from '../components/ProductCard/ProductCard';
-import { useCart } from '../store/CartContext';
-import { fetchAllProducts } from '../api/mealApi';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import { useCart } from '../../store/CartContext';
+import { fetchAllProducts } from '../../api/mealApi';
 import './CartPage.css';
 
 export default function CartPage() {

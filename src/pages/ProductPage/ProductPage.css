@@ -1,0 +1,244 @@
+.product-page { padding: 24px 0 150px; }
+
+body:has(.product-page) .footer__contacts { margin-top: -5px; }
+
+/* Back button wrapper */
+.product-page__back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.product-page__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #72A479;
+  border: none;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.product-page__back:hover { background: #5d8f64; }
+
+.product-page__back-label {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Card: 400px fixed, nutrition absolute at bottom-right */
+.product-page__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 400px;
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.product-page__image {
+  grid-column: 1;
+  height: 100%;
+  overflow: hidden;
+}
+.product-page__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-page__info {
+  grid-column: 2;
+  padding: 28px 32px 90px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.product-page__name {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.product-page__desc {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.product-page__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* Weight — lighter */
+.product-page__weight {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 13px;
+  color: #ccc;
+}
+
+/* Cart button */
+.product-page__price-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.product-page__add-btn {
+  display: flex;
+  align-items: center;
+  background: #72A479;
+  border: none;
+  color: #fff;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 11px 16px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.product-page__add-btn:hover { background: #5d8f64; }
+
+.product-page__add-divider {
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.4);
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+.product-page__add-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.product-page__price {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Counter */
+.product-page__counter {
+  display: flex;
+  align-items: center;
+  background: #3a3a3a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.product-page__counter button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-page__counter button:hover { background: #72A479; }
+.product-page__counter span {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* Nutrition — absolute at bottom, starts from right edge of image */
+.product-page__nutrition {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.nutrition-row {
+  display: flex;
+  padding: 0 32px;
+}
+
+.nutrition-row span {
+  flex: 1;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 12px;
+}
+
+.nutrition-row--labels span {
+  color: #888;
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+/* Divider goes full card width — no padding */
+.nutrition-divider {
+  width: 100%;
+  height: 1px;
+  background: #444;
+}
+
+.nutrition-row--values span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 8px;
+  padding-bottom: 14px;
+}
+
+/* Divider before related */
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 0 0 32px;
+  width: 100%;
+}
+
+/* Related — full-width slider like home page */
+.product-page__related .menu-section__header { margin-bottom: 20px; }
+.product-page__related .section-title { margin-bottom: 0; }
+
+.product-page__related-slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 20px 20px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+.product-page__related-slider::-webkit-scrollbar { display: none; }
+.product-page__related-slider .product-card { flex: 0 0 240px; min-width: 0; }
+
+@media (max-width: 900px) {
+  .product-page__card { grid-template-columns: 1fr; height: auto; }
+  .product-page__image { height: 280px; }
+  .product-page__info { padding: 24px 24px 90px; }
+  .product-page__nutrition { left: 0; }
+}

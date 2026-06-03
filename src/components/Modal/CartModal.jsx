@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CartModal.css';
 
 export default function CartModal({ isOpen, onClose }) {
+  const navigate = useNavigate();
   useEffect(() => {
     if (isOpen) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = '';
@@ -15,9 +17,13 @@ export default function CartModal({ isOpen, onClose }) {
       <div className="cart-modal" onClick={e => e.stopPropagation()}>
         <button className="cart-modal__close" onClick={onClose}>✕</button>
         <div className="cart-modal__empty">
-          <img src="./cart.svg" alt="cart" className="cart-modal__icon" />
+          <img src="/images/cart.svg" alt="cart" className="cart-modal__icon" />
           <h3>КОРЗИНА ПУСТАЯ</h3>
-          <button className="cart-modal__menu-btn" onClick={onClose}>Посмотреть меню</button>
+          <button className="cart-modal__menu-btn" onClick={() => {
+            onClose();
+            navigate('/');
+            setTimeout(() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' }), 50);
+          }}>Посмотреть меню</button>
         </div>
       </div>
     </div>

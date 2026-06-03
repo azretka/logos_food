@@ -175,6 +175,14 @@
   background: #5d8f64;
 }
 
+.header__cart-divider {
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
 .header__cart-count {
   background: #fff;
   color: var(--green);

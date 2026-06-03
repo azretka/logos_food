@@ -9,9 +9,9 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="product-card">
+      {qty > 0 && <span className="product-card__badge">{qty}</span>}
       <div className="product-card__img-wrap" onClick={() => navigate(`/product/${product.id}`)}>
         <img src={product.image} alt={product.name} className="product-card__img" />
-        {qty > 0 && <span className="product-card__badge">{qty}</span>}
       </div>
       <div className="product-card__body">
         <div className="product-card__meta">
