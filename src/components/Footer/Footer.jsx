@@ -3,10 +3,10 @@ import Map from '../Map/Map';
 import Contacts from '../Contacts/Contacts';
 import './Footer.css';
 
-export default function Footer() {
+export default function Footer({ noMap = false }) {
   return (
     <footer className="footer">
-      <div className="footer__map-section">
+      {!noMap && <div className="footer__map-section">
         <div className="footer__map-bg">
           <Map className="footer__map" />
         </div>
@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="container footer__map-content">
           <Contacts />
         </div>
-      </div>
+      </div>}
 
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
@@ -34,9 +34,9 @@ export default function Footer() {
             </div>
           </div>
           <nav className="footer__nav">
-            <Link to="#">О ресторане</Link>
+            <Link to="/">О ресторане</Link>
             <Link to="/delivery">Условия доставки</Link>
-            <Link to="#">Возврат товара</Link>
+            <Link to="/checkout">Возврат товара</Link>
             <Link to="/promotions">Акции</Link>
           </nav>
         </div>

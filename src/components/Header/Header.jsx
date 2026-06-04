@@ -66,7 +66,7 @@ export default function Header() {
 
           <div className="header__contacts">
             <div className="header__contacts-icon">
-              <img src="/images/ring.svg" alt="phone" />
+              <img src="./images/ring.svg" alt="phone" />
             </div>
             <div>
               <span className="header__contacts-label">Контакты:</span>

@@ -77,7 +77,7 @@ export default function ProductPage() {
                       <button className="product-page__add-btn" onClick={() => addItem(product)}>
                         Корзина
                         <span className="product-page__add-divider" />
-                        <img src="/images/shopping_bag.svg" alt="" className="product-page__add-icon" />
+                        <img src="./images/shopping_bag.svg" alt="" className="product-page__add-icon" />
                       </button>
                       <span className="product-page__price">{product.price.toLocaleString()} ₽</span>
                     </>

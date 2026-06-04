@@ -4,13 +4,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #2a2a2a;
+  --bg: #2e2e2e;
   --bg-card: #333333;
   --bg-input: #3d3d3d;
   --bg-section: #242424;
-  --green: #4e8c47;
-  --green-hover: #3d7038;
-  --green-light: #5ca354;
+  --green: #72A479;
+  --green-hover: #5d8f64;
+  --green-light: #89bc90;
   --text: #ffffff;
   --text-muted: #aaaaaa;
   --text-dark: #888888;

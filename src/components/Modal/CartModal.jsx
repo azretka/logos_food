@@ -17,7 +17,7 @@ export default function CartModal({ isOpen, onClose }) {
       <div className="cart-modal" onClick={e => e.stopPropagation()}>
         <button className="cart-modal__close" onClick={onClose}>✕</button>
         <div className="cart-modal__empty">
-          <img src="/images/cart.svg" alt="cart" className="cart-modal__icon" />
+          <img src="./images/cart.svg" alt="cart" className="cart-modal__icon" />
           <h3>КОРЗИНА ПУСТАЯ</h3>
           <button className="cart-modal__menu-btn" onClick={() => {
             onClose();

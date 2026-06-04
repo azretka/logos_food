@@ -1,3 +1,5 @@
+import './Contacts.css';
+
 export default function Contacts() {
   return (
     <div className="footer__contacts">
@@ -5,7 +7,7 @@ export default function Contacts() {
       <div className="footer__contacts-divider" />
 
       <div className="footer__contact-item">
-        <img src="/images/Location.svg" alt="" className="footer__contact-icon" />
+        <img src="./images/Location.svg" alt="" className="footer__contact-icon" />
         <div>
           <p className="footer__contact-label">Наш адрес</p>
           <p>МО, городской округ Красногорск, село Ильинское,</p>
@@ -13,7 +15,7 @@ export default function Contacts() {
         </div>
       </div>
       <div className="footer__contact-item">
-        <img src="/images/Message.svg" alt="" className="footer__contact-icon" />
+        <img src="./images/Message.svg" alt="" className="footer__contact-icon" />
         <div>
           <p className="footer__contact-label">Наша почта</p>
           <a href="mailto:auto.wash@gmail.com">auto.wash@gmail.com</a>
@@ -33,10 +35,10 @@ export default function Contacts() {
       <div className="footer__social">
         <span>Мы в соц.сетях:</span>
         <div className="footer__social-icons">
-          <a href="#" className="footer__social-icon"><img src="/images/facebook.svg" alt="Facebook" /></a>
-          <a href="#" className="footer__social-icon"><img src="/images/vkontakte-logo.svg" alt="VK" /></a>
-          <a href="#" className="footer__social-icon"><img src="/images/instagram.svg" alt="Instagram" /></a>
-          <a href="#" className="footer__social-icon"><img src="/images/youtube-button.svg" alt="YouTube" /></a>
+          <a href="#" className="footer__social-icon"><img src="./images/facebook.svg" alt="Facebook" /></a>
+          <a href="#" className="footer__social-icon"><img src="./images/vkontakte-logo.svg" alt="VK" /></a>
+          <a href="#" className="footer__social-icon"><img src="./images/instagram.svg" alt="Instagram" /></a>
+          <a href="#" className="footer__social-icon"><img src="./images/youtube-button.svg" alt="YouTube" /></a>
         </div>
       </div>
     </div>

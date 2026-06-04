@@ -1,8 +1,8 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import Navigation from '../../components/Navigation/Navigation';
 import Map from '../../components/Map/Map';
-import Contacts from '../../components/Contacts/Contacts';
 import { deliveryFAQ } from '../../data/mockData';
 import './Delivery.css';
 
@@ -13,6 +13,7 @@ export default function Delivery() {
   return (
     <>
       <Header />
+      <Navigation />
       <main className="delivery-page">
         <div className="container">
           <div className="delivery-page__header">
@@ -26,11 +27,7 @@ export default function Delivery() {
                 <div key={item.id} className={`faq-item ${openId === item.id ? 'open' : ''}`}>
                   <button className="faq-item__question" onClick={() => toggle(item.id)}>
                     <span>{item.question}</span>
-                    <svg
-                      className="faq-item__arrow"
-                      width="16" height="16" viewBox="0 0 24 24"
-                      fill="none" stroke="currentColor" strokeWidth="2"
-                    >
+                    <svg className="faq-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </button>
@@ -44,7 +41,6 @@ export default function Delivery() {
             <div className="delivery-page__map">
               <Map />
             </div>
-            <Contacts />
           </div>
 
           <div className="delivery-info">
@@ -60,12 +56,12 @@ export default function Delivery() {
 
           <div className="delivery-min">
             <p className="delivery-min__title">Минимальный заказ:</p>
-            <p>Бесплатная доставка пешим курьером при сумме заказа от 400 ₽</p>
+            <p>Бесплатная доставка пешим курьером при сумме заказа от 1000 ₽</p>
             <p>Доставка оператором такси от любой суммы заказа — по тарифам перевозчика.</p>
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer noMap />
     </>
   );
 }

@@ -63,7 +63,7 @@ export default function Home() {
         <section className="hero">
           <div className="hero__overlay" />
           <div className="hero__content">
-            <img src="/images/taste.svg" alt="taste" className="hero__taste" />
+            <img src="./images/taste.svg" alt="taste" className="hero__taste" />
           </div>
         </section>
 

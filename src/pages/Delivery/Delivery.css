@@ -26,7 +26,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: -60px;
   align-items: start;
 }
 
@@ -38,6 +38,7 @@
   border-radius: 4px;
   overflow: hidden;
 }
+
 
 .faq-item__question {
   display: flex;
@@ -64,7 +65,7 @@
 .faq-item.open .faq-item__arrow { transform: rotate(180deg); }
 
 .faq-item__answer {
-  background: rgba(0,0,0,0.2);
+  background: #504B4A;
   padding: 14px 16px;
   font-size: 14px;
   color: #e0e0e0;
@@ -77,6 +78,9 @@
   border-radius: 8px;
   overflow: hidden;
   background: #3a3a3a;
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
 }
 .delivery-page__map .leaflet-tile-pane {
   filter: grayscale(1) brightness(0.7);

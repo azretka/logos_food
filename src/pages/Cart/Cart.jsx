@@ -2,10 +2,11 @@
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import Navigation from '../../components/Navigation/Navigation';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { useCart } from '../../store/CartContext';
 import { fetchAllProducts } from '../../api/mealApi';
-import './CartPage.css';
+import './Cart.css';
 
 export default function CartPage() {
   const { items, total, decrement, increment, removeItem } = useCart();
@@ -21,26 +22,38 @@ export default function CartPage() {
     .sort(() => Math.random() - 0.5)
     .slice(0, 4);
 
-    const MIN_ORDER = 500;
+    const MIN_ORDER = 1000;
+
+  const itemWord = (n) => {
+    const abs = Math.abs(n) % 100;
+    const mod = abs % 10;
+    if (abs >= 11 && abs <= 19) return 'товаров';
+    if (mod === 1) return 'товар';
+    if (mod >= 2 && mod <= 4) return 'товара';
+    return 'товаров';
+  };
 
   return (
     <>
       <Header />
+      <Navigation />
       <main className="cart-page">
         <div className="container">
-          <button className="cart-page__back" onClick={() => navigate('/')}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"/></svg>
-            К выбору блюда
-          </button>
+          <div className="cart-page__top">
+            <button className="cart-page__back" onClick={() => navigate('/')}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"/></svg>
+              К выбору блюда
+            </button>
 
-          <div className="cart-page__header">
-            <h1 className="cart-page__title">
-              <span className="cart-page__title-bar" />
-              КОРЗИНА
-            </h1>
-            {items.length > 0 && (
-              <span className="cart-page__count">В корзине {items.length} товара</span>
-            )}
+            <div className="cart-page__header">
+              <h1 className="cart-page__title">
+                <span className="cart-page__title-bar" />
+                КОРЗИНА
+              </h1>
+              {items.length > 0 && (
+                <span className="cart-page__count">(В корзине {items.length} {itemWord(items.length)})</span>
+              )}
+            </div>
           </div>
 
           {items.length === 0 ? (
@@ -64,7 +77,7 @@ export default function CartPage() {
                   </div>
                   <span className="cart-item__price">{(item.price * item.qty).toLocaleString()} ₽</span>
                   <button className="cart-item__remove" onClick={() => removeItem(item.id)}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                   </button>
                 </div>
               ))}
@@ -85,17 +98,19 @@ export default function CartPage() {
           {items.length > 0 && (
             <div className="cart-page__summary">
               <div className="cart-summary">
-                <div className="cart-summary__row">
-                  <span>Итого:</span>
-                  <span className="cart-summary__total">{total.toLocaleString()} ₽</span>
+                <div className="cart-summary__info">
+                  <div className="cart-summary__row">
+                    <span>Итого:</span>
+                    <span className="cart-summary__total">{total.toLocaleString()} ₽</span>
+                  </div>
+                  <p className="cart-summary__note">
+                    {total < MIN_ORDER
+                      ? <>До бесплатной доставки не хватает <span className="cart-summary__note-amount">{(MIN_ORDER - total).toLocaleString()} ₽</span></>
+                      : 'Бесплатная доставка!'
+                    }
+                  </p>
+                  <p className="cart-summary__hint">Минимальная сумма заказа 1000 ₽</p>
                 </div>
-                <p className="cart-summary__note">
-                  {total < MIN_ORDER
-                    ? `До бесплатной доставки не хватает ${(MIN_ORDER - total).toLocaleString()} ₽`
-                    : 'Бесплатная доставка!'
-                  }
-                </p>
-                <p className="cart-summary__hint">Минимальная сумма заказа 500 ₽</p>
                 <button
                   className="cart-summary__checkout"
                   onClick={() => navigate('/checkout')}
@@ -108,7 +123,7 @@ export default function CartPage() {
           )}
         </div>
       </main>
-      <Footer />
+      <Footer noMap />
     </>
   );
 }

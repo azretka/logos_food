@@ -1,6 +1,6 @@
 .product-page { padding: 24px 0 150px; }
 
-body:has(.product-page) .footer__contacts { margin-top: -5px; }
+body:has(.product-page) .footer__contacts { margin-top: -35px; }
 
 /* Back button wrapper */
 .product-page__back-wrap {
