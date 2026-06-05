@@ -246,10 +246,66 @@
 .feature-icon-wrap:hover .feature-icon--hover  { opacity: 1; }
 
 @media (max-width: 768px) {
-  .about-cafe__content { grid-template-columns: 1fr; }
-  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Nav */
+  .category-nav { top: 168px !important; }
+  .category-nav__inner {
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    justify-content: flex-start !important;
+  }
+  .category-nav__inner::-webkit-scrollbar { display: none; }
+  .category-nav__item {
+    flex: 0 0 auto !important;
+    padding: 12px 18px !important;
+    font-size: 13px !important;
+  }
+
+  /* Hero */
+  .hero { height: 240px !important; }
+
+  /* Menu sections — боковые отступы для выравнивания */
+  .menu-sections { padding: 0 16px !important; }
+  .menu-section {
+    padding-top: 24px !important;
+    padding-bottom: 36px !important;
+  }
+  .menu-section::after {
+    background: rgba(255,255,255,0.12) !important;
+  }
+
+  /* Заголовок раздела: название слева, стрелки справа */
+  .menu-section__header {
+    flex-direction: row !important;
+    margin-bottom: 28px !important;
+    padding: 0 4px !important;
+  }
+
+  /* Название раздела — чуть крупнее, отступ слева */
+  .section-title {
+    font-size: 15px !important;
+    letter-spacing: 0.01em !important;
+    white-space: nowrap !important;
+    padding-left: 12px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Слайдер — snap по одной карточке */
+  .menu-slider {
+    padding: 8px 0 !important;
+    scroll-snap-type: x mandatory !important;
+  }
+  .menu-slider .product-card {
+    flex: 0 0 calc(100vw - 64px) !important;
+    scroll-snap-align: start !important;
+  }
+
+  /* About cafe — скрыт */
+  .about-cafe { display: none !important; }
 }
 
 @media (max-width: 480px) {
-  .menu-grid { grid-template-columns: 1fr; }
+  .category-nav { top: 168px !important; }
+  .menu-slider .product-card { flex: 0 0 calc(100vw - 48px) !important; }
+  .section-title { font-size: 14px !important; }
+  .hero { height: 200px !important; }
 }

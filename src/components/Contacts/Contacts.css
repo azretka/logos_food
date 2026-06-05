@@ -100,3 +100,23 @@
 }
 .footer__social-icon img { width: 18px; height: 18px; object-fit: contain; }
 .footer__social-icon:hover { background: var(--green); }
+
+@media (max-width: 768px) {
+  .footer__contacts {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 28px !important;
+    padding: 24px 20px !important;
+  }
+  .footer__contacts-title {
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+  }
+  .footer__actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .footer__reserve-btn { text-align: center !important; }
+  .footer__phone { font-size: 20px !important; }
+}

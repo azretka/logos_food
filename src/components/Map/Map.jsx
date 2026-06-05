@@ -1,17 +1,24 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
-const pinIcon = L.icon({
-  iconUrl: '/images/wearehere.png',
+delete L.Icon.Default.prototype._getIconUrl;
+
+const pinIcon = L.divIcon({
+  html: '<img src="/images/wearehere.png" style="width:80px;height:80px;display:block;" />',
   iconSize: [80, 80],
-  iconAnchor: [40, 80],
-  popupAnchor: [0, -80],
+  iconAnchor: [40, 40],
+  className: '',
 });
 
-const LOCATION = [55.8243, 37.3395];
-const MAP_CENTER = [55.8252, 37.3242]; // сдвиг центра влево — пин появляется правее
+const LOCATION = [55.8250, 37.3500];
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+// Mobile: contacts block covers top ~484px of the 700px map.
+// Shift center 0.005° north so pin renders at ~557px from top (close below contacts).
+const MOBILE_CENTER = [55.830, 37.3500];
+const DESKTOP_CENTER = [55.8243, 37.3369];
+const MAP_CENTER = isMobile ? MOBILE_CENTER : DESKTOP_CENTER;
 
 export default function Map({ className = '' }) {
   return (
@@ -26,9 +33,7 @@ export default function Map({ className = '' }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={LOCATION} icon={pinIcon}>
-        <Popup>Мы здесь</Popup>
-      </Marker>
+      <Marker position={LOCATION} icon={pinIcon} />
     </MapContainer>
   );
 }
