@@ -345,6 +345,14 @@
   .about-cafe { display: none !important; }
 }
 
+/* iPad mini и планшеты — карточки как на десктопе, 3 в ряд */
+@media (min-width: 641px) and (max-width: 768px) {
+  .menu-slider .product-card {
+    flex: 0 0 calc(33.33vw - 16px) !important;
+    scroll-snap-align: start !important;
+  }
+}
+
 @media (max-width: 480px) {
   .category-nav { top: 168px !important; }
   .menu-slider .product-card { flex: 0 0 calc(100vw - 48px) !important; }

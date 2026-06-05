@@ -121,3 +121,12 @@
   .footer__reserve-btn { text-align: center !important; }
   .footer__phone { font-size: 20px !important; }
 }
+
+/* iPad mini — фиксированная ширина, по центру */
+@media (min-width: 641px) and (max-width: 768px) {
+  .footer__contacts {
+    width: 420px !important;
+    height: auto !important;
+    border-radius: 16px !important;
+  }
+}

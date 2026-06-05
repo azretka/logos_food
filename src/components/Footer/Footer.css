@@ -167,3 +167,21 @@
   .footer__brand { text-align: center !important; }
   .footer__legal { text-align: center !important; align-items: center !important; }
 }
+
+/* iPad mini — пин виден (~557px от верха), контакты по центру с отступом */
+@media (min-width: 641px) and (max-width: 768px) {
+  .footer__map-section {
+    min-height: 620px !important;
+  }
+  .footer__map-content {
+    justify-content: center !important;
+    align-items: flex-start !important;
+    min-height: 620px !important;
+  }
+  .footer__contacts {
+    margin-top: 48px !important;
+  }
+  .footer {
+    padding-bottom: 100px !important;
+  }
+}
