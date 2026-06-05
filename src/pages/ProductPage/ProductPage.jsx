@@ -16,7 +16,27 @@ export default function ProductPage() {
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(true);
   const sliderRef = useRef(null);
-  const slide = (dir) => sliderRef.current?.scrollBy({ left: dir * 820, behavior: 'smooth' });
+  const slide = (dir) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    if (window.innerWidth <= 768) {
+      const cards = Array.from(el.querySelectorAll('.product-card'));
+      if (!cards.length) return;
+      const elLeft = el.getBoundingClientRect().left;
+      const snapLeft = 16;
+      let currentIndex = 0;
+      let minDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.getBoundingClientRect().left - elLeft - snapLeft);
+        if (dist < minDist) { minDist = dist; currentIndex = i; }
+      });
+      const targetIndex = Math.max(0, Math.min(currentIndex + dir, cards.length - 1));
+      const targetCardLeft = cards[targetIndex].getBoundingClientRect().left - elLeft;
+      el.scrollTo({ left: el.scrollLeft + targetCardLeft - snapLeft, behavior: 'smooth' });
+    } else {
+      el.scrollBy({ left: dir * 820, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     setLoading(true);

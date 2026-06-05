@@ -404,9 +404,39 @@
 .checkout-submit:hover:not(:disabled) { background: var(--green-hover); }
 .checkout-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
+@media (max-width: 768px) {
+  body:has(.checkout-page) .header__search-wrap { display: none !important; }
+  body:has(.checkout-page) .category-nav { top: 84px !important; }
+
+  .checkout-page__top { width: 100%; }
+  .checkout-closed-banner { width: 100%; flex-direction: column; gap: 16px; }
+  .checkout-page__sections { width: 100%; }
+  .checkout-section { width: 100%; }
+
+  .checkout-section:nth-child(1),
+  .checkout-section:nth-child(2),
+  .checkout-section:nth-child(2).checkout-section--short,
+  .checkout-section:nth-child(3),
+  .checkout-section:nth-child(3).checkout-section--tall,
+  .checkout-section:nth-child(4) { height: auto; }
+
+  .checkout-row-2 { grid-template-columns: 1fr; }
+  .checkout-row-3 { grid-template-columns: 1fr; }
+
+  .checkout-tabs { flex-wrap: wrap; }
+  .checkout-tab { flex: 1; font-size: 13px; padding: 0 8px; height: 44px; }
+  .checkout-delivery-time { margin-left: 0; margin-top: 10px; }
+  .checkout-time-input { width: 100% !important; margin-left: 0 !important; margin-top: 8px; }
+  .checkout-select--restaurant { width: 100%; }
+
+  .checkout-submit-wrap { width: 100%; height: auto; padding: 20px 16px; }
+  .checkout-submit-row { flex-direction: column; align-items: stretch; }
+  .checkout-submit { width: 100%; text-align: center; }
+}
+
 @media (max-width: 600px) {
   .checkout-row-2 { grid-template-columns: 1fr; }
-  .checkout-row-3 { grid-template-columns: 1fr 1fr; }
+  .checkout-row-3 { grid-template-columns: 1fr; }
   .checkout-submit-row { flex-direction: column; align-items: stretch; }
   .checkout-submit { width: 100%; text-align: center; }
 }

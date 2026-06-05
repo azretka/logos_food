@@ -39,7 +39,7 @@ export default function Header() {
     <>
       <header className="header">
         <div className="header__top container">
-          <button className="header__hamburger">
+          <button className="header__hamburger" onClick={() => { navigate('/'); setTimeout(() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' }), 50); }}>
             <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/>
             </svg>

@@ -82,3 +82,17 @@ body:has(.promotions-page) .footer__contacts { margin-top: -40px; }
 @media (max-width: 480px) {
   .promotions-grid { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  /* 1. Скрываем строку "Введите адрес доставки" в хэдере */
+  body:has(.promotions-page) .header__search-wrap { display: none !important; }
+
+  /* Навигация прилипает сразу под хэдером (без строки поиска хэдер ~84px) */
+  body:has(.promotions-page) .category-nav { top: 84px !important; }
+
+  /* 2. Отступ между заголовком "Акции" и линией */
+  .promotions-page .section-title { margin-bottom: 20px !important; }
+
+  /* 3. Отступ снизу */
+  .promotions-page { padding-bottom: 60px !important; }
+}

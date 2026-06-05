@@ -120,6 +120,13 @@
 }
 
 @media (max-width: 768px) {
-  .delivery-page__content { grid-template-columns: 1fr; }
+  /* 1. Скрываем строку адреса, навигация прилипает под коротким хэдером */
+  body:has(.delivery-page) .header__search-wrap { display: none !important; }
+  body:has(.delivery-page) .category-nav { top: 84px !important; }
+
+  .delivery-page__content { grid-template-columns: 1fr; margin-bottom: 32px; }
   .delivery-info { flex-direction: column; gap: 20px; }
+
+  /* 2. Карта выше FAQ */
+  .delivery-page__map { order: -1; }
 }

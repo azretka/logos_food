@@ -237,8 +237,62 @@ body:has(.product-page) .footer__contacts { margin-top: -35px; }
 .product-page__related-slider .product-card { flex: 0 0 240px; min-width: 0; }
 
 @media (max-width: 900px) {
-  .product-page__card { grid-template-columns: 1fr; height: auto; }
-  .product-page__image { height: 280px; }
-  .product-page__info { padding: 24px 24px 90px; }
+  .product-page__card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: auto;
+  }
+  .product-page__image {
+    grid-column: 1;
+    grid-row: 1;
+    height: 300px;
+  }
+  .product-page__info {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 24px 24px 100px;
+  }
   .product-page__nutrition { left: 0; }
+}
+
+@media (max-width: 768px) {
+  /* 1. Убираем навигацию */
+  body:has(.product-page) .category-nav { display: none !important; }
+
+  .product-page { padding: 16px 0 60px; }
+
+  /* 2. Фото — полная ширина карточки, чуть выше */
+  .product-page__image { height: 260px !important; }
+  .product-page__image img { border-radius: 0 !important; }
+
+  /* 3. Карточка */
+  .product-page__card { margin-bottom: 24px !important; }
+
+  /* 4. Центрируем содержимое инфо-блока */
+  .product-page__info {
+    padding: 20px 16px 100px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .product-page__name { font-size: 22px !important; }
+  .product-page__desc { text-align: center !important; }
+  .product-page__bottom { align-items: center !important; }
+  .product-page__price-row { justify-content: center !important; }
+
+  /* Related slider — snap one card at a time */
+  .product-page__related-slider {
+    padding: 8px 0 !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-left: 16px !important;
+  }
+  .product-page__related-slider::before {
+    content: '';
+    display: block;
+    min-width: 16px;
+    flex-shrink: 0;
+  }
+  .product-page__related-slider .product-card {
+    flex: 0 0 calc(100vw - 64px) !important;
+    scroll-snap-align: start !important;
+  }
 }

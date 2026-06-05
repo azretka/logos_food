@@ -73,6 +73,7 @@
 .footer__reserve-btn:hover { background: #5d8f64; }
 
 .footer__phone { font-size: 18px; font-weight: 700; color: #fff; display: block; }
+.footer__phone-block { text-align: center; }
 .footer__phone-block span { font-size: 12px; color: #666; }
 
 .footer__social {

@@ -12,10 +12,26 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const sectionRefs = useRef({});
   const sliderRefs = useRef({});
+  const slideIndexes = useRef({});
 
   const slide = (catId, dir) => {
     const el = sliderRefs.current[catId];
-    if (el) el.scrollBy({ left: dir * 820, behavior: 'smooth' });
+    if (!el) return;
+    if (window.innerWidth <= 768) {
+      const cards = Array.from(el.querySelectorAll('.product-card'));
+      if (!cards.length) return;
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const slotWidth = cardWidth + 16;
+      // Use stored index to avoid reading mid-animation scrollLeft
+      if (slideIndexes.current[catId] === undefined) {
+        slideIndexes.current[catId] = Math.round(el.scrollLeft / slotWidth);
+      }
+      const targetIndex = Math.max(0, Math.min(slideIndexes.current[catId] + dir, cards.length - 1));
+      slideIndexes.current[catId] = targetIndex;
+      el.scrollTo({ left: targetIndex * slotWidth, behavior: 'smooth' });
+    } else {
+      el.scrollBy({ left: dir * 820, behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
@@ -105,7 +121,7 @@ export default function Home() {
                 <div className="about-cafe__left">
                   <h2 className="about-cafe__title">НАШЕ КАФЕ</h2>
                   <p>Мы расположены в одном из самых живописных мест города — на берегу реки, это ваш оазис в черте города, куда можно сбежать от шумного и пыльного мегаполиса. Мы, действительно уникальны, ведь всё продумано до мелочей: проект построен из дикого закарпатского сруба, камин в основном зале ресторана и панорамные окна с видом на реку, уютные беседки на берегу реки и лучшая видовая терраса, шатер с посадкой на 200 человек, сказочный детский домик и бассейн.</p>
-                  <button className="about-cafe__btn">ПОСМОТРЕТЬ МЕНЮ</button>
+                  <button className="about-cafe__btn" onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}>ПОСМОТРЕТЬ МЕНЮ</button>
                 </div>
                 <div className="about-cafe__features">
                   {[
