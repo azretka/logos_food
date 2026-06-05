@@ -248,6 +248,38 @@
 .feature-icon-wrap:hover .feature-icon--normal { opacity: 0; }
 .feature-icon-wrap:hover .feature-icon--hover  { opacity: 1; }
 
+@media (max-width: 1024px) {
+  .category-nav__inner {
+    overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: flex-start;
+  }
+  .category-nav__inner::-webkit-scrollbar { display: none; }
+  .category-nav__item { flex: 0 0 auto; }
+}
+
+@media (max-width: 1200px) {
+  .about-cafe__features { grid-template-columns: 170px 170px; }
+  .feature-icon-wrap { width: 170px; height: 170px; }
+  .feature-icon { width: 170px; height: 170px; }
+}
+
+@media (max-width: 1024px) {
+  .about-cafe__card { margin: 0 16px; }
+  .about-cafe__content { padding: 40px; gap: 20px; }
+  .about-cafe__features { grid-template-columns: 140px 140px; }
+  .feature-icon-wrap { width: 140px; height: 140px; }
+  .feature-icon { width: 140px; height: 140px; }
+}
+
+@media (max-width: 900px) {
+  .about-cafe__content { grid-template-columns: 1fr; }
+  .about-cafe__features { display: none; }
+  .about-cafe__left { max-width: 100%; }
+
+  .menu-slider .product-card { flex: 0 0 calc(33.33vw - 16px); }
+}
+
 @media (max-width: 768px) {
   /* Nav */
   .category-nav { top: 168px !important; }

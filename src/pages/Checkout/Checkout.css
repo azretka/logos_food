@@ -404,6 +404,14 @@
 .checkout-submit:hover:not(:disabled) { background: var(--green-hover); }
 .checkout-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
+@media (max-width: 900px) {
+  .checkout-page__top,
+  .checkout-closed-banner,
+  .checkout-page__sections,
+  .checkout-section,
+  .checkout-submit-wrap { width: 100%; }
+}
+
 @media (max-width: 768px) {
   body:has(.checkout-page) .header__search-wrap { display: none !important; }
   body:has(.checkout-page) .category-nav { top: 84px !important; }

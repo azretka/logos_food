@@ -284,6 +284,12 @@
 .cart-summary__checkout:hover:not(:disabled) { background: var(--green-hover); }
 .cart-summary__checkout:disabled { opacity: 0.5; cursor: not-allowed; }
 
+@media (max-width: 900px) {
+  .cart-page__top { margin-left: 0; }
+  .cart-summary { width: 100%; }
+  .cart-page__suggestions-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 768px) {
   body:has(.cart-page) .category-nav { display: none !important; }
 
