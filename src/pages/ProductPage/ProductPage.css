@@ -218,6 +218,7 @@ body:has(.product-page) .footer__contacts { margin-top: -35px; }
 }
 
 /* Related — full-width slider like home page */
+.product-page__related { overflow-x: clip; }
 .product-page__related .menu-section__header { margin-bottom: 20px; }
 .product-page__related .section-title { margin-bottom: 0; }
 

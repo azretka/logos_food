@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../store/CartContext';
+import { categories } from '../../api/mealApi';
 import CartModal from '../Modal/CartModal';
 import './Header.css';
 
@@ -15,6 +16,7 @@ export default function Header() {
   const [address, setAddress] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -35,14 +37,39 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const handleMenuCategory = (catId) => {
+    setMenuOpen(false);
+    navigate('/');
+    setTimeout(() => {
+      const el = document.getElementById('menu');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
+
+  const handleMenuNav = (path) => {
+    setMenuOpen(false);
+    navigate(path);
+  };
+
   return (
     <>
       <header className="header">
         <div className="header__top container">
-          <button className="header__hamburger" onClick={() => { navigate('/'); setTimeout(() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' }), 50); }}>
-            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/>
-            </svg>
+          <button className="header__hamburger" onClick={() => setMenuOpen(o => !o)}>
+            {menuOpen ? (
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
+              </svg>
+            ) : (
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/>
+              </svg>
+            )}
             <span>МЕНЮ</span>
           </button>
           <Link to="/" className="header__logo">LOGOS</Link>
@@ -95,6 +122,25 @@ export default function Header() {
           </div>
         </div>
       </header>
+
+      {menuOpen && (
+        <div className="mobile-menu__overlay" onClick={() => setMenuOpen(false)}>
+          <div className="mobile-menu" onClick={e => e.stopPropagation()}>
+            <div className="mobile-menu__section-title">Навигация</div>
+            <button className="mobile-menu__item" onClick={() => handleMenuNav('/')}>Домашняя страница</button>
+            <button className="mobile-menu__item" onClick={() => handleMenuNav('/promotions')}>Акции</button>
+            <button className="mobile-menu__item" onClick={() => handleMenuNav('/delivery')}>Условия доставки</button>
+            <button className="mobile-menu__item" onClick={() => handleMenuNav('/cart')}>Корзина</button>
+            <div className="mobile-menu__divider" />
+            <div className="mobile-menu__section-title">Разделы меню</div>
+            {categories.map(cat => (
+              <button key={cat.id} className="mobile-menu__item mobile-menu__item--sub" onClick={() => handleMenuCategory(cat.id)}>
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>

@@ -179,7 +179,7 @@
 .cart-item__remove:hover { background: #5d8f64; }
 
 /* Suggestions */
-.cart-page__suggestions { margin-bottom: 40px; margin-top: 20px; }
+.cart-page__suggestions { margin-bottom: 40px; margin-top: 20px; overflow-x: clip; }
 
 .cart-suggestions__header {
   display: flex;

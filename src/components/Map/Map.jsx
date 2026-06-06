@@ -20,10 +20,11 @@ const MOBILE_CENTER = [55.830, 37.3500];
 const DESKTOP_CENTER = [55.8243, 37.3369];
 const MAP_CENTER = isMobile ? MOBILE_CENTER : DESKTOP_CENTER;
 
-export default function Map({ className = '' }) {
+export default function Map({ className = '', pinCentered = false }) {
+  const center = pinCentered ? LOCATION : MAP_CENTER;
   return (
     <MapContainer
-      center={MAP_CENTER}
+      center={center}
       zoom={15}
       scrollWheelZoom={false}
       zoomControl={false}

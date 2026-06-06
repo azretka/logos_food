@@ -1,4 +1,7 @@
-.footer { background: var(--bg-section); }
+.footer {
+  background: var(--bg-section);
+  margin-top: auto;
+}
 
 .footer__map-section {
   position: relative;
@@ -52,8 +55,6 @@
   gap: 40px;
 }
 
-.footer__bottom-left { display: flex; gap: 40px; align-items: center; }
-
 .footer__scroll-top {
   width: 56px;
   height: 56px;
@@ -66,10 +67,12 @@
   justify-content: center;
   flex-shrink: 0;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  margin-left: -80px;
+  transition: background 0.3s, color 0.3s;
 }
-.footer__scroll-top:hover { background: var(--green); color: #fff; }
+.footer__scroll-top--flash {
+  background: var(--green) !important;
+  color: #fff !important;
+}
 
 .footer__brand-block { display: flex; flex-direction: column; gap: 6px; }
 
@@ -101,19 +104,16 @@
   flex-wrap: wrap;
   font-size: 20px;
   align-self: center;
-  margin-right: 120px;
 }
 .footer__nav a { color: #fff; transition: color 0.2s; }
 .footer__nav a:hover { color: #aaa; }
 
 @media (max-width: 1024px) {
-  .footer__nav { margin-right: 20px; font-size: 16px; }
-  .footer__scroll-top { margin-left: -20px; }
+  .footer__nav { margin-right: 0; font-size: 16px; }
 }
 
 @media (max-width: 900px) {
-  .footer__nav { margin-right: 0; font-size: 14px; gap: 16px; }
-  .footer__scroll-top { margin-left: 0; }
+  .footer__nav { font-size: 14px; gap: 16px; }
 }
 
 @media (max-width: 768px) {
@@ -133,39 +133,25 @@
     margin-top: 60px !important;
   }
   .footer__bottom {
-    padding: 10px 0 70px !important;
+    padding: 10px 0 !important;
     position: relative !important;
     z-index: 10 !important;
     background: linear-gradient(to right, #1e1e1e 0%, #2a2a2a 100%) !important;
   }
   .footer__bottom-inner {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 16px !important;
-    text-align: center !important;
-    padding: 16px 30px !important;
-  }
-  .footer__bottom-left {
     flex-direction: row !important;
     align-items: center !important;
-    gap: 1px !important;
-    width: 90% !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    padding: 16px 20px !important;
+    text-align: center !important;
   }
   .footer__brand-block {
-    flex: 1 !important;
-    align-items: center !important;
-  }
-  .footer__scroll-top {
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    margin-left: 0 !important;
-    flex-shrink: 0 !important;
+    align-items: flex-start !important;
   }
   .footer__nav { display: none !important; }
-  .footer__brand { text-align: center !important; }
-  .footer__legal { text-align: center !important; align-items: center !important; }
+  .footer__brand { text-align: left !important; }
+  .footer__legal { text-align: left !important; }
 }
 
 /* iPad mini — пин виден (~557px от верха), контакты по центру с отступом */
@@ -182,6 +168,6 @@
     margin-top: 48px !important;
   }
   .footer {
-    padding-bottom: 100px !important;
+    padding-bottom: 0 !important;
   }
 }

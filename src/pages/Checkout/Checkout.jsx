@@ -1,9 +1,60 @@
-﻿import { useState } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Navigation from '../../components/Navigation/Navigation';
 import './Checkout.css';
+
+const RESTAURANTS = [
+  { value: '1', label: 'МО, с. Ильинское, Экспериментальная ул., 10' },
+];
+
+function CustomSelect({ value, onChange, options, placeholder }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const selected = options.find(o => o.value === value);
+
+  useEffect(() => {
+    const handler = (e) => { if (!ref.current?.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  return (
+    <div className="custom-select" ref={ref}>
+      <button
+        type="button"
+        className={`custom-select__trigger${open ? ' custom-select__trigger--open' : ''}`}
+        onClick={() => setOpen(o => !o)}
+      >
+        <span className={selected ? '' : 'custom-select__placeholder'}>
+          {selected ? selected.label : placeholder}
+        </span>
+        <svg className="custom-select__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#72A479" strokeWidth="2.5" strokeLinecap="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      {open && (
+        <ul className="custom-select__list">
+          {!value && (
+            <li className="custom-select__item custom-select__item--placeholder" onClick={() => { onChange(''); setOpen(false); }}>
+              {placeholder}
+            </li>
+          )}
+          {options.map(o => (
+            <li
+              key={o.value}
+              className={`custom-select__item${value === o.value ? ' custom-select__item--active' : ''}`}
+              onClick={() => { onChange(o.value); setOpen(false); }}
+            >
+              {o.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 const isOpen = () => {
   const now = new Date();
@@ -22,6 +73,7 @@ export default function Checkout() {
   const [persons, setPersons] = useState(1);
   const [callPref, setCallPref] = useState('no');
   const [agreed, setAgreed] = useState(false);
+  const [orderDone, setOrderDone] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', street: '', house: '', apt: '', entrance: '', floor: '', code: '', restaurant: '' });
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
@@ -123,10 +175,12 @@ export default function Checkout() {
                   </div>
                 ) : (
                   <div className="checkout-address">
-                    <select value={form.restaurant} onChange={e => set('restaurant', e.target.value)} className="checkout-select checkout-select--restaurant">
-                      <option value="">Выберите ресторан</option>
-                      <option value="1">МО, с. Ильинское, Экспериментальная ул., 10</option>
-                    </select>
+                    <CustomSelect
+                      value={form.restaurant}
+                      onChange={v => set('restaurant', v)}
+                      options={RESTAURANTS}
+                      placeholder="Выберите ресторан"
+                    />
                   </div>
                 )}
               </div>
@@ -151,21 +205,23 @@ export default function Checkout() {
             <div className="checkout-section">
               <h2 className="checkout-section__num">4. Когда доставить</h2>
               <div className="checkout-section__body">
-                <div className="checkout-tabs">
-                  {[['asap', 'В ближайшее время'], ['time', 'Ко времени']].map(([k, l]) => (
-                    <button key={k} className={`checkout-tab ${timeType === k ? 'active' : ''}`} onClick={() => setTimeType(k)}>{l}</button>
-                  ))}
-                  {timeType === 'time' && (
-                    <input type="text" placeholder="ЧЧ:ММ" className="checkout-time-input" value={timeVal} onChange={onTime} />
-                  )}
-                </div>
+                <div className="checkout-time-group">
+                  <div className="checkout-tabs">
+                    {[['asap', 'В ближайшее время'], ['time', 'Ко времени']].map(([k, l]) => (
+                      <button key={k} className={`checkout-tab ${timeType === k ? 'active' : ''}`} onClick={() => setTimeType(k)}>{l}</button>
+                    ))}
+                    {timeType === 'time' && (
+                      <input type="text" placeholder="ЧЧ:ММ" className="checkout-time-input" value={timeVal} onChange={onTime} />
+                    )}
+                  </div>
 
-                <div className="checkout-persons">
-                  <span>Кол-во персон</span>
-                  <div className="checkout-counter">
-                    <button onClick={() => setPersons(p => Math.max(1, p - 1))}>−</button>
-                    <span>{persons}</span>
-                    <button onClick={() => setPersons(p => p + 1)}>+</button>
+                  <div className="checkout-persons">
+                    <span>Кол-во персон</span>
+                    <div className="checkout-counter">
+                      <button onClick={() => setPersons(p => Math.max(1, p - 1))}>−</button>
+                      <span>{persons}</span>
+                      <button onClick={() => setPersons(p => p + 1)}>+</button>
+                    </div>
                   </div>
                 </div>
 
@@ -191,11 +247,33 @@ export default function Checkout() {
                 <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} />
                 <span>Я согласен на обработку моих персональных данных в соответствии с <a href="#">Условиями</a></span>
               </label>
-              <button className="checkout-submit" disabled={!agreed}>Оформить заказ</button>
+              <button className="checkout-submit" disabled={!agreed} onClick={() => setOrderDone(true)}>Оформить заказ</button>
             </div>
           </div>
         </div>
       </main>
+      {orderDone && (
+        <div className="cart-modal-overlay" onClick={() => setOrderDone(false)}>
+          <div className="cart-modal" onClick={e => e.stopPropagation()}>
+            <button className="cart-modal__close" onClick={() => setOrderDone(false)}>✕</button>
+            <div className="cart-modal__empty">
+              <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+                <circle cx="36" cy="36" r="36" fill="rgba(114,164,121,0.15)" />
+                <circle cx="36" cy="36" r="28" fill="rgba(114,164,121,0.2)" />
+                <polyline points="22,37 32,47 50,27" stroke="#72A479" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+              <h3>ЗАКАЗ ОФОРМЛЕН</h3>
+              <p style={{ color: '#aaa', fontSize: 14, textAlign: 'center', lineHeight: 1.6 }}>
+                Мы свяжемся с вами в ближайшее время
+              </p>
+              <button className="cart-modal__menu-btn" onClick={() => { setOrderDone(false); navigate('/'); }}>
+                На главную
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Footer noMap />
     </>
   );

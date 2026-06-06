@@ -93,6 +93,7 @@
 /* Menu */
 .menu-sections {
   padding: 40px 20px;
+  overflow-x: clip;
 }
 
 .menu-section {
@@ -282,7 +283,7 @@
 
 @media (max-width: 768px) {
   /* Nav */
-  .category-nav { top: 168px !important; }
+  .category-nav { top: 162px !important; }
   .category-nav__inner {
     overflow-x: auto !important;
     scrollbar-width: none !important;
@@ -354,7 +355,7 @@
 }
 
 @media (max-width: 480px) {
-  .category-nav { top: 168px !important; }
+  .category-nav { top: 162px !important; }
   .menu-slider .product-card { flex: 0 0 calc(100vw - 48px) !important; }
   .section-title { font-size: 14px !important; }
   .hero { height: 200px !important; }

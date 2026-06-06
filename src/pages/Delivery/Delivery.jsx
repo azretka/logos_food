@@ -39,7 +39,7 @@ export default function Delivery() {
             </div>
 
             <div className="delivery-page__map">
-              <Map />
+              <Map pinCentered />
             </div>
           </div>
 

@@ -1,6 +1,10 @@
-.promotions-page { padding: 36px 0 160px; }
+.promotions-page { padding: 36px 0 60px; }
 
-body:has(.promotions-page) .footer__contacts { margin-top: -40px; }
+body:has(.promotions-page) .footer__map-section {
+  margin-top: 0;
+  padding-top: 0;
+}
+body:has(.promotions-page) .footer__contacts { margin-top: 80px; }
 
 .section-divider {
   border: none;
