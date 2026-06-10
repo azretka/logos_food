@@ -1,3 +1,22 @@
+/* Sticky wrapper — header + nav в одном контейнере, зазор невозможен */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+.sticky-nav .header {
+  position: relative;
+  z-index: auto;
+  box-shadow: none;
+}
+.sticky-nav .category-nav {
+  position: relative;
+  top: 0 !important;
+  z-index: auto;
+  margin-top: -2px;
+}
+
 /* Category nav */
 .category-nav {
   background: #2a2a2a;

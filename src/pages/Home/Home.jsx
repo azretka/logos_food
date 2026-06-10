@@ -73,7 +73,13 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <div className="sticky-nav">
+        <Header />
+        <Navigation
+          activeCategory={activeCategory}
+          onCategoryChange={handleCategoryChange}
+        />
+      </div>
 
       <main className="home">
         <section className="hero">
@@ -82,11 +88,6 @@ export default function Home() {
             <img src="./images/taste.svg" alt="taste" className="hero__taste" />
           </div>
         </section>
-
-        <Navigation
-          activeCategory={activeCategory}
-          onCategoryChange={handleCategoryChange}
-        />
 
         <div className="menu-sections container">
           {groupedProducts.map(group => (
